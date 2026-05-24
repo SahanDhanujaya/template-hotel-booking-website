@@ -9,8 +9,9 @@ const ContactSection = () => {
     agreeToTerms: false
   });
 
-  const handleInputChange = (e) => {
-    const { name, value, type, checked } = e.target;
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const target = e.target as HTMLInputElement;
+    const { name, value, type, checked } = target;
     setFormData(prev => ({
       ...prev,
       [name]: type === 'checkbox' ? checked : value
@@ -108,7 +109,7 @@ const ContactSection = () => {
                 <div className="flex flex-col">
                   <textarea
                     name="message"
-                    rows="3"
+                    rows={3}
                     value={formData.message}
                     onChange={handleInputChange}
                     placeholder="Message"
