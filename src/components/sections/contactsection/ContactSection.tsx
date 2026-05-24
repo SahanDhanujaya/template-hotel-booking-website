@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 
 const ContactSection = () => {
-  // Local form state management
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -18,7 +17,7 @@ const ContactSection = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log('Form submission payload:', formData);
     // Add logic here to connect with your backend framework routing endpoint
@@ -112,7 +111,7 @@ const ContactSection = () => {
                     rows="3"
                     value={formData.message}
                     onChange={handleInputChange}
-                    placeholder="Massage"
+                    placeholder="Message"
                     required
                     className="w-full bg-transparent text-sm font-light text-gray-700 placeholder-gray-400 pb-2 border-b border-gray-200 outline-none resize-none transition-colors focus:border-sky-400"
                   />

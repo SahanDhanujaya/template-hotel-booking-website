@@ -1,5 +1,4 @@
-import React from 'react';
-import aboutImage from '../../../assets/offers/manuel-moreno-DGa0LQ0yDPc-unsplash.jpg'; // Adjust your image path if needed
+import aboutImage from '../../../assets/offers/manuel-moreno-DGa0LQ0yDPc-unsplash.jpg';
 
 const AboutSection = () => {
   return (
@@ -11,7 +10,7 @@ const AboutSection = () => {
           <div className="col-span-1 md:col-span-6 relative flex justify-center md:justify-start">
             
             {/* Abstract blue accent circle behind top-left of image matching hero accent style */}
-            <div className="absolute -top-10 -left-10 w-44 h-44 rounded-full border-[24px] border-blue-50/60 opacity-70 pointer-events-none hidden sm:block z-0" />
+            <div className="absolute -top-10 -left-10 w-44 h-44 rounded-full border-24 border-blue-50/60 opacity-70 pointer-events-none hidden sm:block z-0" />
             
             {/* Main Section Image */}
             <div className="w-full max-w-md md:max-w-full aspect-square overflow-hidden shadow-sm relative z-10">

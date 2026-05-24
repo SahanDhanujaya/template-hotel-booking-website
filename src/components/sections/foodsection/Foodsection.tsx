@@ -1,5 +1,3 @@
-import React from 'react';
-
 const FoodSection = () => {
   // Offers and Food Packages Data
   const offers = [
@@ -43,7 +41,7 @@ const FoodSection = () => {
             <div key={offer.id} className="flex flex-col items-center group">
               
               {/* Image Segment Wrapper */}
-              <div className="w-[85%] aspect-[4/3] overflow-hidden shadow-md z-10 relative">
+              <div className="w-[85%] aspect-4/3 overflow-hidden shadow-md z-10 relative">
                 <img 
                   src={offer.image} 
                   alt={offer.title} 
@@ -55,12 +53,12 @@ const FoodSection = () => {
               <div className="bg-white border border-slate-50 shadow-[0_8px_30px_rgba(0,0,0,0.03)] w-full -mt-16 pt-24 pb-10 px-6 sm:px-8 flex flex-col items-center justify-center text-center relative z-0">
                 
                 {/* Package Heading */}
-                <h3 className="text-xl font-serif text-[#1F2432] max-w-[200px] leading-snug mb-4 group-hover:text-sky-500 transition-colors duration-300">
+                <h3 className="text-xl font-serif text-[#1F2432] max-w-50 leading-snug mb-4 group-hover:text-sky-500 transition-colors duration-300">
                   {offer.title}
                 </h3>
 
                 {/* Subtext Paragraph */}
-                <p className="text-xs sm:text-sm text-gray-400 font-light leading-relaxed max-w-[240px] mb-8">
+                <p className="text-xs sm:text-sm text-gray-400 font-light leading-relaxed max-w-60 mb-8">
                   {offer.description}
                 </p>
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 const RoomsSection = () => {
   // Existing Rooms Grid Data
@@ -296,7 +296,7 @@ const RoomsSection = () => {
               className="bg-white flex flex-col overflow-hidden shadow-[0_4px_25px_rgba(0,0,0,0.04)] hover:shadow-[0_10px_35px_rgba(0,0,0,0.08)] transition-all duration-300 group"
             >
               {/* Image & Price Tag Wrapper */}
-              <div className="w-full aspect-[4/3] overflow-hidden z-9">
+              <div className="w-full aspect-4/3 overflow-hidden z-9">
                 <img
                   src={room.image}
                   alt={room.title}
@@ -305,7 +305,7 @@ const RoomsSection = () => {
               </div>
 
               {/* Room Content Card */}
-              <div className="relative pt-10 pb-8 px-6 sm:px-8 flex flex-col items-start text-left flex-grow">
+              <div className="relative pt-10 pb-8 px-6 sm:px-8 flex flex-col items-start text-left grow">
                 {/* Star Ratings */}
                 <div className="flex gap-1 mb-4 text-amber-400 text-sm">
                   {[...Array(5)].map((_, index) => (
@@ -373,7 +373,7 @@ const RoomsSection = () => {
 
       {/* NEW SECTION: Panoramic Widescreen Slider Stage */}
       <div className="w-full relative px-4 sm:px-0">
-        <div className="max-w-[1440px] mx-auto relative h-[480px] sm:h-[540px] md:h-[580px] flex items-center justify-center">
+        <div className="max-w-360 mx-auto relative h-120 sm:h-135 md:h-145 flex items-center justify-center">
           {/* Track Slides */}
           <div className="w-full h-full flex gap-6 items-center justify-center relative">
             {panoramicSlides.map((slide, index) => {
@@ -406,7 +406,7 @@ const RoomsSection = () => {
                   <img
                     src={slide.image}
                     alt={slide.title}
-                    className={`w-full h-full object-cover transition-transform duration-[1200ms] ease-out ${
+                    className={`w-full h-full object-cover transition-transform duration-1200 ease-out ${
                       index === currentSlide ? "scale-100" : "scale-110"
                     }`}
                   />
