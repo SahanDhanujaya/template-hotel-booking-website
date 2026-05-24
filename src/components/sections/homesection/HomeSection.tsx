@@ -89,7 +89,7 @@ const HomeSection = () => {
       </div>
 
       {/* Floating Booking Widget */}
-      <div className="w-full bg-[#FDFBF9] md:bg-[#FDFBF9]/80 md:backdrop-blur-md border-t border-[#F5ECE5] py-6 shadow-xl relative z-20">
+      <div className="w-full bg-[#FDFBF9] md:bg-[#FDFBF9]/80 md:backdrop-blur-md border-t border-[#F5ECE5] py-6 border-b relative z-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4 lg:gap-6 items-end">
             
