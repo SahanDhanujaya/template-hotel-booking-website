@@ -83,7 +83,7 @@ const HomeSection = () => {
             />
           </div>
           {/* Fallback pattern graphic replicating the paint splatter on left of image */}
-          <div className="absolute top-0 bottom-0 -left-3.75 w-8 bg-gradient-to-r from-[#FDFBF9] to-transparent z-10 hidden md:block" />
+          <div className="absolute top-0 bottom-0 -left-3.75 w-8 bg-linear-to-r from-[#FDFBF9] to-transparent z-10 hidden md:block" />
         </div>
 
       </div>
@@ -170,7 +170,7 @@ const HomeSection = () => {
               <div key={offer.id} className="flex flex-col items-center group relative">
                 
                 {/* Image Container */}
-                <div className="w-[88%] sm:w-[85%] md:w-[90%] aspect-[4/3] overflow-hidden shadow-md relative z-20 translate-y-6 group-hover:translate-y-4 transition-transform duration-300">
+                <div className="w-[88%] sm:w-[85%] md:w-[90%] aspect-4/3 overflow-hidden shadow-md relative z-20 translate-y-6 group-hover:translate-y-4 transition-transform duration-300">
                   <img 
                     src={offer.image} 
                     alt={offer.title} 
@@ -179,12 +179,12 @@ const HomeSection = () => {
                 </div>
 
                 {/* Text Block Content Card */}
-                <div className="w-full bg-white pt-12 pb-12 px-6 sm:px-8 text-center shadow-[0_10px_30px_rgba(0,0,0,0.03)] flex flex-col items-center justify-between min-h-[220px] relative z-10">
+                <div className="w-full bg-white pt-12 pb-12 px-6 sm:px-8 text-center shadow-[0_10px_30px_rgba(0,0,0,0.03)] flex flex-col items-center justify-between min-h-55 relative z-10">
                   <div className="flex flex-col items-center">
-                    <h3 className="text-xl font-serif text-[#1F2432] leading-snug mb-3 max-w-[200px]">
+                    <h3 className="text-xl font-serif text-[#1F2432] leading-snug mb-3 max-w-50">
                       {offer.title}
                     </h3>
-                    <p className="text-xs text-gray-400 font-light leading-relaxed max-w-[240px]">
+                    <p className="text-xs text-gray-400 font-light leading-relaxed max-w-60">
                       {offer.description}
                     </p>
                   </div>
@@ -202,7 +202,6 @@ const HomeSection = () => {
           </div>
         </div>
       </div>
-
     </section>
   );
 };
