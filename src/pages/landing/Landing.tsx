@@ -5,6 +5,8 @@ import AboutSection from "../../components/sections/aboutsection/AboutSection";
 import ContactSection from "../../components/sections/contactsection/ContactSection";
 import RoomsSection from "../../components/sections/roomsection/RoomSection";
 import FoodSection from "../../components/sections/foodsection/Foodsection";
+import TopScrollButton from "../../components/topScrollutton/TopScrollButton";
+import ReviewSection from "../../components/sections/reviewSection/ReviewSection";
 
 const Landing = () => {
     return (
@@ -14,19 +16,23 @@ const Landing = () => {
             <div id="home">
                 <HomeSection />
             </div>
-            <div id="about">
+            <div data-aos="fade-up" id="about">
                 <AboutSection />
             </div>
-            <div id="rooms">
+            <div data-aos="fade-up" id="rooms">
                 <RoomsSection />
             </div>
-            <div id="food">
+            <div data-aos="fade-up" id="food">
                 <FoodSection />
             </div>
-            <div id="contact">
+            <div data-aos="fade-up" id="reviews">
+                <ReviewSection />
+            </div>
+            <div data-aos="fade-up" id="contact">
                 <ContactSection />
             </div>
             <Footer />
+            <TopScrollButton />
         </div>
     );
 }

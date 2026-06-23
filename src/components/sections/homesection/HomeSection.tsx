@@ -29,7 +29,7 @@ const HomeSection = () => {
     <section className="relative w-full bg-[#FDFBF9] flex flex-col justify-between">
       
       {/* Main Content Container */}
-      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24 md:py-12 grid grid-cols-1 md:grid-cols-12 gap-8 items-center relative z-10 my-auto">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24 py-2 md:py-12 lg:py-2 grid grid-cols-1 md:grid-cols-12 gap-8 items-center relative z-10 my-auto">
         
         {/* Left Side: Text Content */}
         <div className="md:col-span-6 flex flex-col justify-center text-left relative">
@@ -75,15 +75,15 @@ const HomeSection = () => {
             <img 
               src="/hero.jpg" 
               alt="Luxury Resort Architecture" 
-              className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-500 "
+              className="w-full h-full object-cover object-center hover:scale-105 hover:border-opacity-0 transition-transform duration-500 "
               style={{
-                maskImage: 'linear-gradient(to right, transparent 0%, black 15%)',
-                WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 15%)',
+                maskImage: 'linear-gradient(to right, transparent 10%, black 50%)',
+                WebkitMaskImage: 'linear-gradient(to right, transparent 5%, black 35%)',
               }}
             />
           </div>
           {/* Fallback pattern graphic replicating the paint splatter on left of image */}
-          <div className="absolute top-0 bottom-0 -left-3.75 w-8 bg-linear-to-r from-[#FDFBF9] to-transparent z-10 hidden md:block" />
+          <div className="absolute top-0 bottom-0 -left-3.75 w-8 z-10 hidden md:block" />
         </div>
 
       </div>
