@@ -5,6 +5,8 @@ import AboutSection from "../../components/sections/aboutsection/AboutSection";
 import ContactSection from "../../components/sections/contactsection/ContactSection";
 import RoomsSection from "../../components/sections/roomsection/RoomSection";
 import FoodSection from "../../components/sections/foodsection/Foodsection";
+import TopScrollButton from "../../components/topScrollutton/TopScrollButton";
+import ReviewSection from "../../components/sections/reviewSection/ReviewSection";
 
 const Landing = () => {
     return (
@@ -23,10 +25,14 @@ const Landing = () => {
             <div id="food">
                 <FoodSection />
             </div>
+            <div id="reviews">
+                <ReviewSection />
+            </div>
             <div id="contact">
                 <ContactSection />
             </div>
             <Footer />
+            <TopScrollButton />
         </div>
     );
 }
