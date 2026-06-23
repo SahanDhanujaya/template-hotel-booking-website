@@ -16,19 +16,19 @@ const Landing = () => {
             <div id="home">
                 <HomeSection />
             </div>
-            <div data-aos="fade-up" id="about">
+            <div id="about">
                 <AboutSection />
             </div>
-            <div data-aos="fade-up" id="rooms">
+            <div id="rooms">
                 <RoomsSection />
             </div>
-            <div data-aos="fade-up" id="food">
+            <div id="food">
                 <FoodSection />
             </div>
-            <div data-aos="fade-up" id="reviews">
+            <div id="reviews">
                 <ReviewSection />
             </div>
-            <div data-aos="fade-up" id="contact">
+            <div id="contact">
                 <ContactSection />
             </div>
             <Footer />
