@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { ArrowLeftIcon, ArrowRightIcon } from "lucide-react";
 
 const RoomsSection = () => {
   // Existing Rooms Grid Data
@@ -39,13 +40,13 @@ const RoomsSection = () => {
   const amenities = [
     {
       id: 1,
-      label: "FAST WIFI",
+      label: "Fast Wifi",
       icon: (
         <svg
-          className="w-7 h-7"
+          className="w-6 h-6"
           fill="none"
           stroke="currentColor"
-          strokeWidth="1.2"
+          strokeWidth="1.75"
           viewBox="0 0 24 24"
         >
           <path
@@ -58,13 +59,13 @@ const RoomsSection = () => {
     },
     {
       id: 2,
-      label: "COFFEE",
+      label: "Coffee",
       icon: (
         <svg
-          className="w-7 h-7"
+          className="w-6 h-6"
           fill="none"
           stroke="currentColor"
-          strokeWidth="1.2"
+          strokeWidth="1.75"
           viewBox="0 0 24 24"
         >
           <path
@@ -77,13 +78,13 @@ const RoomsSection = () => {
     },
     {
       id: 3,
-      label: "BATH",
+      label: "Bath",
       icon: (
         <svg
-          className="w-7 h-7"
+          className="w-6 h-6"
           fill="none"
           stroke="currentColor"
-          strokeWidth="1.2"
+          strokeWidth="1.75"
           viewBox="0 0 24 24"
         >
           <path
@@ -96,13 +97,13 @@ const RoomsSection = () => {
     },
     {
       id: 4,
-      label: "PARKING SPACE",
+      label: "Parking Space",
       icon: (
         <svg
-          className="w-7 h-7"
+          className="w-6 h-6"
           fill="none"
           stroke="currentColor"
-          strokeWidth="1.2"
+          strokeWidth="1.75"
           viewBox="0 0 24 24"
         >
           <path
@@ -115,13 +116,13 @@ const RoomsSection = () => {
     },
     {
       id: 5,
-      label: "SWIMMING POOL",
+      label: "Swimming Pool",
       icon: (
         <svg
-          className="w-7 h-7"
+          className="w-6 h-6"
           fill="none"
           stroke="currentColor"
-          strokeWidth="1.2"
+          strokeWidth="1.75"
           viewBox="0 0 24 24"
         >
           <path
@@ -134,13 +135,13 @@ const RoomsSection = () => {
     },
     {
       id: 6,
-      label: "LAUNDRY SERVICE",
+      label: "Laundry Service",
       icon: (
         <svg
-          className="w-7 h-7"
+          className="w-6 h-6"
           fill="none"
           stroke="currentColor"
-          strokeWidth="1.2"
+          strokeWidth="1.75"
           viewBox="0 0 24 24"
         >
           <path
@@ -153,13 +154,13 @@ const RoomsSection = () => {
     },
     {
       id: 7,
-      label: "BREAKFAST",
+      label: "Breakfast",
       icon: (
         <svg
-          className="w-7 h-7"
+          className="w-6 h-6"
           fill="none"
           stroke="currentColor"
-          strokeWidth="1.2"
+          strokeWidth="1.75"
           viewBox="0 0 24 24"
         >
           <path
@@ -172,13 +173,13 @@ const RoomsSection = () => {
     },
     {
       id: 8,
-      label: "SPA & WELLNESS",
+      label: "Spa & Wellness",
       icon: (
         <svg
-          className="w-7 h-7"
+          className="w-6 h-6"
           fill="none"
           stroke="currentColor"
-          strokeWidth="1.2"
+          strokeWidth="1.75"
           viewBox="0 0 24 24"
         >
           <path
@@ -191,13 +192,13 @@ const RoomsSection = () => {
     },
     {
       id: 9,
-      label: "MEETING ROOM",
+      label: "Meeting Room",
       icon: (
         <svg
-          className="w-7 h-7"
+          className="w-6 h-6"
           fill="none"
           stroke="currentColor"
-          strokeWidth="1.2"
+          strokeWidth="1.75"
           viewBox="0 0 24 24"
         >
           <path
@@ -210,13 +211,13 @@ const RoomsSection = () => {
     },
     {
       id: 10,
-      label: "WELCOME DRINK",
+      label: "Welcome Drink",
       icon: (
         <svg
-          className="w-7 h-7"
+          className="w-6 h-6"
           fill="none"
           stroke="currentColor"
-          strokeWidth="1.2"
+          strokeWidth="1.75"
           viewBox="0 0 24 24"
          >
           <path
@@ -236,7 +237,7 @@ const RoomsSection = () => {
       image:
         "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=80",
       title: "Rooms & Suites",
-      subtitle: "DISCOVER",
+      subtitle: "Discover",
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Adipiscing integer ultrices suspendisse varius etiam est.",
     },
@@ -245,7 +246,7 @@ const RoomsSection = () => {
       image:
         "https://images.unsplash.com/photo-1540518614846-7eded433c457?auto=format&fit=crop&w=1200&q=80",
       title: "Presidential Suites",
-      subtitle: "LUXURY",
+      subtitle: "Featured",
       description:
         "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
     },
@@ -254,7 +255,7 @@ const RoomsSection = () => {
       image:
         "https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=1200&q=80",
       title: "Penthouse Overlook",
-      subtitle: "EXCLUSIVE",
+      subtitle: "Exclusive",
       description:
         "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
     },
@@ -276,15 +277,15 @@ const RoomsSection = () => {
   };
 
   return (
-    <section className="w-full bg-[#FDFBF9] pt-24 pb-32 relative overflow-hidden">
+    <section className="w-full bg-[#F5F6F8] font-sans pt-24 pb-32 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         {/* Section Tagline */}
-        <span className="text-[11px] font-semibold tracking-[0.25em] text-[#b3925a] uppercase block mb-3 font-sans">
+        <span className="text-[12px] font-medium text-teal-700 block mb-3">
           Discover
         </span>
 
         {/* Section Heading */}
-        <h2 className="text-3xl md:text-4xl font-serif text-[#2c2520] uppercase tracking-wide mb-16">
+        <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-zinc-900 mb-16">
           Rooms & Suites
         </h2>
 
@@ -293,7 +294,7 @@ const RoomsSection = () => {
           {rooms.map((room) => (
             <div
               key={room.id}
-              className="bg-white flex flex-col overflow-hidden shadow-[0_15px_40px_rgba(44,37,32,0.02)] border border-gray-100 rounded-sm group transition-all duration-300"
+              className="bg-white flex flex-col overflow-hidden border border-zinc-200 rounded-2xl group transition-all duration-300 hover:border-teal-300"
             >
               {/* Image & Price Tag Wrapper */}
               <div className="w-full aspect-4/3 overflow-hidden z-9 relative">
@@ -307,31 +308,31 @@ const RoomsSection = () => {
               {/* Room Content Card */}
               <div className="relative pt-10 pb-8 px-6 sm:px-8 flex flex-col items-start text-left grow">
                 {/* Star Ratings */}
-                <div className="flex gap-1 mb-4 text-[#b3925a] text-xs">
+                <div className="flex gap-1 mb-4 text-teal-600 text-xs">
                   {[...Array(5)].map((_, index) => (
                     <span key={index}>{index < room.rating ? "★" : "☆"}</span>
                   ))}
                 </div>
 
                 {/* Title */}
-                <h3 className="text-lg font-serif text-[#2c2520] uppercase tracking-wide mb-3 transition-colors group-hover:text-[#b3925a]">
+                <h3 className="text-lg font-semibold text-zinc-900 mb-3 transition-colors group-hover:text-teal-700">
                   {room.title}
                 </h3>
 
                 {/* Description Paragraph */}
-                <p className="text-xs sm:text-sm text-gray-400 font-sans font-light leading-relaxed mb-6">
+                <p className="text-[13px] text-zinc-500 leading-relaxed mb-6">
                   {room.description}
                 </p>
 
                 {/* Book Now Interactive Button */}
-                <button className="mt-auto px-6 py-2.5 border border-gray-200 rounded-sm text-[11px] font-semibold uppercase tracking-widest text-gray-500 font-sans transition-all duration-300 hover:bg-[#b3925a] hover:border-[#b3925a] hover:text-white hover:cursor-pointer active:scale-[0.97]">
-                  Book Now
+                <button className="mt-auto px-6 py-2.5 border border-zinc-200 rounded-lg text-[12.5px] font-medium text-zinc-600 transition-all duration-300 hover:bg-teal-700 hover:border-teal-700 hover:text-white hover:cursor-pointer active:scale-[0.97]">
+                  Book now
                 </button>
-                
+
                 {/* Floating Price Tag Badge */}
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white text-[11px] text-gray-450 font-sans font-light tracking-wider px-5 py-2 rounded-sm shadow-[0_4px_15px_rgba(44,37,32,0.05)] border border-gray-100 z-10 uppercase">
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white text-[12px] text-zinc-600 px-5 py-2 rounded-full shadow-sm border border-zinc-200 z-10">
                   Start from{" "}
-                  <span className="text-[#b3925a] font-semibold">{room.price}</span>
+                  <span className="text-teal-700 font-semibold">{room.price}</span>
                   {" "}/ night
                 </div>
               </div>
@@ -341,13 +342,13 @@ const RoomsSection = () => {
 
         {/* ENHANCED NESTED SECTION: Our Best Amenities Grid */}
         <div className="mb-32 max-w-5xl mx-auto">
-          <span className="text-[11px] font-semibold tracking-[0.25em] text-[#b3925a] uppercase block mb-3 font-sans">
+          <span className="text-[12px] font-medium text-teal-700 block mb-3">
             Discover
           </span>
-          <h2 className="text-3xl md:text-4xl font-serif text-[#2c2520] uppercase tracking-wide mb-6">
-            Our Best Amenities
+          <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-zinc-900 mb-6">
+            Our best amenities
           </h2>
-          <p className="text-xs sm:text-sm font-sans text-gray-400 font-light leading-relaxed max-w-2xl mx-auto mb-16">
+          <p className="text-[13.5px] text-zinc-500 leading-relaxed max-w-2xl mx-auto mb-16">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Adipiscing
             integer ultrices suspendisse varius etiam est. Est, felis, tempus
             nec vitae orci sodales Metus, velit nec at diam in sed.
@@ -358,12 +359,12 @@ const RoomsSection = () => {
             {amenities.map((item) => (
               <div
                 key={item.id}
-                className="bg-white border border-gray-200 p-8 flex flex-col items-center justify-center text-center shadow-[0_10px_35px_rgba(44,37,32,0.01)] rounded-sm group hover:border-[#b3925a] transition-all duration-300"
+                className="bg-white border border-zinc-200 p-7 flex flex-col items-center justify-center text-center rounded-2xl group hover:border-teal-300 hover:shadow-sm transition-all duration-300"
               >
-                <div className="text-gray-300 group-hover:text-[#b3925a] transition-colors duration-300 mb-4">
+                <div className="w-10 h-10 rounded-xl bg-teal-50 text-teal-700 flex items-center justify-center mb-3.5 transition-colors duration-300">
                   {item.icon}
                 </div>
-                <span className="text-[10px] font-semibold font-sans tracking-widest text-gray-400 group-hover:text-[#2c2520] transition-colors whitespace-nowrap uppercase">
+                <span className="text-[11px] font-medium text-zinc-500 group-hover:text-zinc-900 transition-colors whitespace-nowrap">
                   {item.label}
                 </span>
               </div>
@@ -400,10 +401,10 @@ const RoomsSection = () => {
               return (
                 <div
                   key={slide.id}
-                  className={`absolute w-[90%] sm:w-[75%] md:w-[65%] h-full rounded-sm overflow-hidden shadow-xl transition-all duration-700 ease-in-out ${position}`}
+                  className={`absolute w-[90%] sm:w-[75%] md:w-[65%] h-full rounded-2xl overflow-hidden shadow-xl transition-all duration-700 ease-in-out ${position}`}
                 >
                   {/* Backdrop Slide Cover Image */}
-                  <div className="absolute inset-0 bg-gray-900/10 z-10" />
+                  <div className="absolute inset-0 bg-zinc-900/10 z-10" />
                   <img
                     src={slide.image}
                     alt={slide.title}
@@ -415,34 +416,34 @@ const RoomsSection = () => {
                   {/* Centered Overlay Information Content Badge */}
                   {index === currentSlide && (
                     <div className="absolute inset-0 flex items-center justify-center p-4 sm:p-6 z-20">
-                      <div className="bg-white max-w-md w-full py-10 px-8 sm:px-12 text-center shadow-2xl relative rounded-sm border border-gray-50">
+                      <div className="bg-white max-w-md w-full py-10 px-8 sm:px-12 text-center shadow-2xl relative rounded-2xl border border-zinc-100">
                         {/* Navigation Left Control Anchor Arrow */}
                         <button
                           onClick={prevSlide}
-                          className="w-9 h-9 rounded-sm bg-white border border-gray-100 shadow-sm flex items-center justify-center text-gray-400 absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-300 hover:border-[#b3925a] hover:text-[#b3925a] hover:cursor-pointer active:scale-95"
+                          className="w-9 h-9 rounded-full bg-white border border-zinc-200 shadow-sm flex items-center justify-center text-zinc-400 absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-300 hover:border-teal-600 hover:text-teal-700 hover:cursor-pointer active:scale-95"
                           aria-label="Previous slide"
                         >
-                          <span className="text-sm font-sans">←</span>
+                          <ArrowLeftIcon className="w-3.5 h-3.5" />
                         </button>
 
                         {/* Slide Texts */}
-                        <span className="text-[10px] font-semibold font-sans tracking-[0.25em] text-[#b3925a] uppercase block mb-2.5">
+                        <span className="text-[11px] font-medium text-teal-700 block mb-2.5">
                           {slide.subtitle}
                         </span>
-                        <h3 className="text-xl sm:text-2xl font-serif text-[#2c2520] uppercase tracking-wide leading-snug mb-4">
+                        <h3 className="text-xl sm:text-2xl font-semibold tracking-tight text-zinc-900 leading-snug mb-4">
                           {slide.title}
                         </h3>
-                        <p className="text-xs font-sans text-gray-400 font-light leading-relaxed max-w-xs mx-auto">
+                        <p className="text-[12.5px] text-zinc-500 leading-relaxed max-w-xs mx-auto">
                           {slide.description}
                         </p>
 
                         {/* Navigation Right Control Anchor Arrow */}
                         <button
                           onClick={nextSlide}
-                          className="w-9 h-9 rounded-sm bg-white border border-gray-100 shadow-sm flex items-center justify-center text-gray-400 absolute right-0 top-1/2 translate-x-1/2 -translate-y-1/2 transition-all duration-300 hover:border-[#b3925a] hover:text-[#b3925a] hover:cursor-pointer active:scale-95"
+                          className="w-9 h-9 rounded-full bg-white border border-zinc-200 shadow-sm flex items-center justify-center text-zinc-400 absolute right-0 top-1/2 translate-x-1/2 -translate-y-1/2 transition-all duration-300 hover:border-teal-600 hover:text-teal-700 hover:cursor-pointer active:scale-95"
                           aria-label="Next slide"
                         >
-                          <span className="text-sm font-sans">→</span>
+                          <ArrowRightIcon className="w-3.5 h-3.5" />
                         </button>
                       </div>
                     </div>
@@ -453,7 +454,7 @@ const RoomsSection = () => {
           </div>
 
           {/* Visual Ground Highlight Overlay Splitting Strip */}
-          <div className="absolute bottom-0 inset-x-0 h-28 bg-[#f7f6f0]/50 pointer-events-none z-0" />
+          <div className="absolute bottom-0 inset-x-0 h-28 bg-white/50 pointer-events-none z-0" />
         </div>
       </div>
     </section>
