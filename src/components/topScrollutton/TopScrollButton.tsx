@@ -28,16 +28,18 @@ const TopScrollButton = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  // It's good practice to return null if you aren't rendering anything
-  if (!isScroll) return null;
-
   return (
     <button
-      onClick={handleScroll} // Simplified: no need for an extra anonymous wrapper function
-      className="text-white text-center flex justify-center items-center h-12 w-12 p-2 fixed bottom-4 right-4 bg-blue-300 rounded-full shadow-lg hover:cursor-pointer transition-transform hover:scale-110 z-[999] animate-bounce hover:animate-none"
+      onClick={handleScroll}
+      className={`
+        text-white flex justify-center items-center h-11 w-11 fixed bottom-6 right-6 
+        bg-[#b3925a] hover:bg-[#917343] rounded-sm transition-all duration-300 z-[999] 
+        shadow-[0_4px_20px_rgba(44,37,32,0.15)] hover:cursor-pointer active:scale-95
+        ${isScroll ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-4 scale-90 pointer-events-none"}
+      `}
       aria-label="Scroll to top"
     >
-      <ArrowUp />
+      <ArrowUp className="w-4 h-4" />
     </button>
   );
 };

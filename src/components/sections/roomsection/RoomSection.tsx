@@ -42,7 +42,7 @@ const RoomsSection = () => {
       label: "FAST WIFI",
       icon: (
         <svg
-          className="w-8 h-8"
+          className="w-7 h-7"
           fill="none"
           stroke="currentColor"
           strokeWidth="1.2"
@@ -61,7 +61,7 @@ const RoomsSection = () => {
       label: "COFFEE",
       icon: (
         <svg
-          className="w-8 h-8"
+          className="w-7 h-7"
           fill="none"
           stroke="currentColor"
           strokeWidth="1.2"
@@ -80,7 +80,7 @@ const RoomsSection = () => {
       label: "BATH",
       icon: (
         <svg
-          className="w-8 h-8"
+          className="w-7 h-7"
           fill="none"
           stroke="currentColor"
           strokeWidth="1.2"
@@ -99,7 +99,7 @@ const RoomsSection = () => {
       label: "PARKING SPACE",
       icon: (
         <svg
-          className="w-8 h-8"
+          className="w-7 h-7"
           fill="none"
           stroke="currentColor"
           strokeWidth="1.2"
@@ -118,7 +118,7 @@ const RoomsSection = () => {
       label: "SWIMMING POOL",
       icon: (
         <svg
-          className="w-8 h-8"
+          className="w-7 h-7"
           fill="none"
           stroke="currentColor"
           strokeWidth="1.2"
@@ -137,7 +137,7 @@ const RoomsSection = () => {
       label: "LAUNDRY SERVICE",
       icon: (
         <svg
-          className="w-8 h-8"
+          className="w-7 h-7"
           fill="none"
           stroke="currentColor"
           strokeWidth="1.2"
@@ -156,7 +156,7 @@ const RoomsSection = () => {
       label: "BREAKFAST",
       icon: (
         <svg
-          className="w-8 h-8"
+          className="w-7 h-7"
           fill="none"
           stroke="currentColor"
           strokeWidth="1.2"
@@ -175,7 +175,7 @@ const RoomsSection = () => {
       label: "SPA & WELLNESS",
       icon: (
         <svg
-          className="w-8 h-8"
+          className="w-7 h-7"
           fill="none"
           stroke="currentColor"
           strokeWidth="1.2"
@@ -194,7 +194,7 @@ const RoomsSection = () => {
       label: "MEETING ROOM",
       icon: (
         <svg
-          className="w-8 h-8"
+          className="w-7 h-7"
           fill="none"
           stroke="currentColor"
           strokeWidth="1.2"
@@ -213,12 +213,12 @@ const RoomsSection = () => {
       label: "WELCOME DRINK",
       icon: (
         <svg
-          className="w-8 h-8"
+          className="w-7 h-7"
           fill="none"
           stroke="currentColor"
           strokeWidth="1.2"
           viewBox="0 0 24 24"
-        >
+         >
           <path
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -276,15 +276,15 @@ const RoomsSection = () => {
   };
 
   return (
-    <section className="w-full bg-white pt-24 pb-32 relative overflow-hidden">
+    <section className="w-full bg-[#FDFBF9] pt-24 pb-32 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         {/* Section Tagline */}
-        <span className="text-[11px] font-bold tracking-[0.25em] text-sky-400 uppercase block mb-3">
+        <span className="text-[11px] font-semibold tracking-[0.25em] text-[#b3925a] uppercase block mb-3 font-sans">
           Discover
         </span>
 
         {/* Section Heading */}
-        <h2 className="text-4xl md:text-5xl font-serif text-[#1F2432] leading-tight mb-16">
+        <h2 className="text-3xl md:text-4xl font-serif text-[#2c2520] uppercase tracking-wide mb-16">
           Rooms & Suites
         </h2>
 
@@ -293,10 +293,10 @@ const RoomsSection = () => {
           {rooms.map((room) => (
             <div
               key={room.id}
-              className="bg-white flex flex-col overflow-hidden shadow-[0_4px_25px_rgba(0,0,0,0.04)] hover:shadow-[0_10px_35px_rgba(0,0,0,0.08)] transition-all duration-300 group"
+              className="bg-white flex flex-col overflow-hidden shadow-[0_15px_40px_rgba(44,37,32,0.02)] border border-gray-100 rounded-sm group transition-all duration-300"
             >
               {/* Image & Price Tag Wrapper */}
-              <div className="w-full aspect-4/3 overflow-hidden z-9">
+              <div className="w-full aspect-4/3 overflow-hidden z-9 relative">
                 <img
                   src={room.image}
                   alt={room.title}
@@ -307,31 +307,32 @@ const RoomsSection = () => {
               {/* Room Content Card */}
               <div className="relative pt-10 pb-8 px-6 sm:px-8 flex flex-col items-start text-left grow">
                 {/* Star Ratings */}
-                <div className="flex gap-1 mb-4 text-amber-400 text-sm">
+                <div className="flex gap-1 mb-4 text-[#b3925a] text-xs">
                   {[...Array(5)].map((_, index) => (
                     <span key={index}>{index < room.rating ? "★" : "☆"}</span>
                   ))}
                 </div>
 
                 {/* Title */}
-                <h3 className="text-xl font-serif text-[#1F2432] mb-3 group-hover:text-sky-500 transition-colors">
+                <h3 className="text-lg font-serif text-[#2c2520] uppercase tracking-wide mb-3 transition-colors group-hover:text-[#b3925a]">
                   {room.title}
                 </h3>
 
                 {/* Description Paragraph */}
-                <p className="text-xs sm:text-sm text-gray-400 font-light leading-relaxed mb-6">
+                <p className="text-xs sm:text-sm text-gray-400 font-sans font-light leading-relaxed mb-6">
                   {room.description}
                 </p>
 
                 {/* Book Now Interactive Button */}
-                <button className="mt-auto px-6 py-2.5 border border-slate-200 rounded-md text-xs font-semibold uppercase tracking-wider text-gray-600 transition-all duration-300 hover:bg-sky-500 hover:border-sky-500 hover:text-white active:scale-[0.97]">
+                <button className="mt-auto px-6 py-2.5 border border-gray-200 rounded-sm text-[11px] font-semibold uppercase tracking-widest text-gray-500 font-sans transition-all duration-300 hover:bg-[#b3925a] hover:border-[#b3925a] hover:text-white hover:cursor-pointer active:scale-[0.97]">
                   Book Now
                 </button>
+                
                 {/* Floating Price Tag Badge */}
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white text-xs text-gray-500 font-light tracking-wide px-6 py-2.5 rounded-full shadow-md whitespace-nowrap border border-slate-50 z-10">
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white text-[11px] text-gray-450 font-sans font-light tracking-wider px-5 py-2 rounded-sm shadow-[0_4px_15px_rgba(44,37,32,0.05)] border border-gray-100 z-10 uppercase">
                   Start from{" "}
-                  <span className="text-sky-500 font-medium">{room.price}</span>
-                  /night
+                  <span className="text-[#b3925a] font-semibold">{room.price}</span>
+                  {" "}/ night
                 </div>
               </div>
             </div>
@@ -340,29 +341,29 @@ const RoomsSection = () => {
 
         {/* ENHANCED NESTED SECTION: Our Best Amenities Grid */}
         <div className="mb-32 max-w-5xl mx-auto">
-          <span className="text-[11px] font-bold tracking-[0.25em] text-sky-400 uppercase block mb-3">
+          <span className="text-[11px] font-semibold tracking-[0.25em] text-[#b3925a] uppercase block mb-3 font-sans">
             Discover
           </span>
-          <h2 className="text-3xl md:text-4xl font-serif text-[#1F2432] mb-6">
+          <h2 className="text-3xl md:text-4xl font-serif text-[#2c2520] uppercase tracking-wide mb-6">
             Our Best Amenities
           </h2>
-          <p className="text-xs sm:text-sm text-gray-400 font-light leading-relaxed max-w-2xl mx-auto mb-16">
+          <p className="text-xs sm:text-sm font-sans text-gray-400 font-light leading-relaxed max-w-2xl mx-auto mb-16">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Adipiscing
             integer ultrices suspendisse varius etiam est. Est, felis, tempus
             nec vitae orci sodales Metus, velit nec at diam in sed.
           </p>
 
           {/* 5 Column Grid Layout matching the design specs */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-5">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
             {amenities.map((item) => (
               <div
                 key={item.id}
-                className="bg-white border border-slate-100 p-8 flex flex-col items-center justify-center text-center shadow-[0_4px_20px_rgba(0,0,0,0.01)] rounded-sm group hover:border-sky-400 hover:shadow-md transition-all duration-300"
+                className="bg-white border border-gray-200 p-8 flex flex-col items-center justify-center text-center shadow-[0_10px_35px_rgba(44,37,32,0.01)] rounded-sm group hover:border-[#b3925a] transition-all duration-300"
               >
-                <div className="text-gray-400 group-hover:text-sky-400 transition-colors duration-300 mb-4">
+                <div className="text-gray-300 group-hover:text-[#b3925a] transition-colors duration-300 mb-4">
                   {item.icon}
                 </div>
-                <span className="text-[10px] font-bold tracking-wider text-gray-500 group-hover:text-[#1F2432] transition-colors whitespace-nowrap">
+                <span className="text-[10px] font-semibold font-sans tracking-widest text-gray-400 group-hover:text-[#2c2520] transition-colors whitespace-nowrap uppercase">
                   {item.label}
                 </span>
               </div>
@@ -373,7 +374,7 @@ const RoomsSection = () => {
 
       {/* NEW SECTION: Panoramic Widescreen Slider Stage */}
       <div className="w-full relative px-4 sm:px-0">
-        <div className="max-w-360 mx-auto relative h-120 sm:h-135 md:h-145 flex items-center justify-center">
+        <div className="max-w-7xl mx-auto relative h-120 sm:h-135 md:h-145 flex items-center justify-center">
           {/* Track Slides */}
           <div className="w-full h-full flex gap-6 items-center justify-center relative">
             {panoramicSlides.map((slide, index) => {
@@ -387,13 +388,13 @@ const RoomsSection = () => {
                 (currentSlide === 0 && index === panoramicSlides.length - 1)
               ) {
                 position =
-                  "opacity-40 scale-90 -translate-x-[75%] sm:-translate-x-[65%] z-10 pointer-events-none";
+                  "opacity-30 scale-90 -translate-x-[75%] sm:-translate-x-[65%] z-10 pointer-events-none";
               } else if (
                 index === currentSlide + 1 ||
                 (currentSlide === panoramicSlides.length - 1 && index === 0)
               ) {
                 position =
-                  "opacity-40 scale-90 translate-x-[75%] sm:translate-x-[65%] z-10 pointer-events-none";
+                  "opacity-30 scale-90 translate-x-[75%] sm:translate-x-[65%] z-10 pointer-events-none";
               }
 
               return (
@@ -413,35 +414,35 @@ const RoomsSection = () => {
 
                   {/* Centered Overlay Information Content Badge */}
                   {index === currentSlide && (
-                    <div className="absolute inset-0 flex items-center justify-center p-4 sm:p-6 z-20 animate-fadeIn">
-                      <div className="bg-white max-w-md w-full py-10 px-8 sm:px-12 text-center shadow-2xl relative">
+                    <div className="absolute inset-0 flex items-center justify-center p-4 sm:p-6 z-20">
+                      <div className="bg-white max-w-md w-full py-10 px-8 sm:px-12 text-center shadow-2xl relative rounded-sm border border-gray-50">
                         {/* Navigation Left Control Anchor Arrow */}
                         <button
                           onClick={prevSlide}
-                          className="w-10 h-10 rounded-full bg-white border border-gray-100 shadow-md flex items-center justify-center text-gray-500 absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-300 hover:bg-sky-500 hover:text-white hover:scale-105 active:scale-95"
+                          className="w-9 h-9 rounded-sm bg-white border border-gray-100 shadow-sm flex items-center justify-center text-gray-400 absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-300 hover:border-[#b3925a] hover:text-[#b3925a] hover:cursor-pointer active:scale-95"
                           aria-label="Previous slide"
                         >
-                          <span className="text-base font-light">←</span>
+                          <span className="text-sm font-sans">←</span>
                         </button>
 
                         {/* Slide Texts */}
-                        <span className="text-[10px] font-bold tracking-[0.25em] text-sky-400 uppercase block mb-2.5">
+                        <span className="text-[10px] font-semibold font-sans tracking-[0.25em] text-[#b3925a] uppercase block mb-2.5">
                           {slide.subtitle}
                         </span>
-                        <h3 className="text-2xl sm:text-3xl font-serif text-[#1F2432] leading-snug mb-4">
+                        <h3 className="text-xl sm:text-2xl font-serif text-[#2c2520] uppercase tracking-wide leading-snug mb-4">
                           {slide.title}
                         </h3>
-                        <p className="text-xs text-gray-400 font-light leading-relaxed max-w-xs mx-auto">
+                        <p className="text-xs font-sans text-gray-400 font-light leading-relaxed max-w-xs mx-auto">
                           {slide.description}
                         </p>
 
                         {/* Navigation Right Control Anchor Arrow */}
                         <button
                           onClick={nextSlide}
-                          className="w-10 h-10 rounded-full bg-white border border-gray-100 shadow-md flex items-center justify-center text-gray-500 absolute right-0 top-1/2 translate-x-1/2 -translate-y-1/2 transition-all duration-300 hover:bg-sky-500 hover:text-white hover:scale-105 active:scale-95"
+                          className="w-9 h-9 rounded-sm bg-white border border-gray-100 shadow-sm flex items-center justify-center text-gray-400 absolute right-0 top-1/2 translate-x-1/2 -translate-y-1/2 transition-all duration-300 hover:border-[#b3925a] hover:text-[#b3925a] hover:cursor-pointer active:scale-95"
                           aria-label="Next slide"
                         >
-                          <span className="text-base font-light">→</span>
+                          <span className="text-sm font-sans">→</span>
                         </button>
                       </div>
                     </div>
@@ -452,7 +453,7 @@ const RoomsSection = () => {
           </div>
 
           {/* Visual Ground Highlight Overlay Splitting Strip */}
-          <div className="absolute bottom-0 inset-x-0 h-28 bg-[#F9F3EE]/40 pointer-events-none z-0" />
+          <div className="absolute bottom-0 inset-x-0 h-28 bg-[#f7f6f0]/50 pointer-events-none z-0" />
         </div>
       </div>
     </section>

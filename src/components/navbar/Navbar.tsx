@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { MenuIcon, XIcon } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   // Local state to manage mobile menu toggle drawer open/close
   const [isOpen, setIsOpen] = useState(false);
+  const [selectedLanguage, setSelectedLanguage] = useState<string>("English");
 
   const toggleMenu = () => setIsOpen(!isOpen);
   const closeMenu = () => setIsOpen(false);
-  const [selectedLanguage, setSelectedLanguage] = useState<string>("English");
 
   // Reusable array of our navigation links targeting section hashes
   const navLinks = [
@@ -27,17 +28,17 @@ const Navbar = () => {
   return (
     <>
       {/* --- DESKTOP & MOBILE WRAPPER HEADER --- */}
-      <nav className="p-4 flex items-center justify-between shadow-lg bg-white/80 backdrop-blur-sm rounded-lg sticky top-0 z-[999] font-serif">
+      <nav className="p-4 flex items-center justify-between shadow-[0_4px_30px_rgba(44,37,32,0.03)] bg-white/90 backdrop-blur-md border-b border-gray-100 sticky top-0 z-[999] font-serif">
         <div className="flex items-center gap-4">
           {/* Logo Branding Block for Desktop */}
-          <div className="bg-blue-400 rounded-xl w-10 h-10 flex items-center justify-center shadow-lg hover:cursor-pointer transition-transform hover:rotate-12 md:flex hidden">
-            <span className="text-2xl font-bold text-gray-200">F</span>
+          <div className="bg-[#b3925a] rounded-sm w-10 h-10 flex items-center justify-center shadow-md hover:cursor-pointer transition-transform hover:rotate-6 md:flex hidden">
+            <span className="text-xl font-serif font-semibold text-white">F</span>
           </div>
 
           {/* Trigger Button: Opens Mobile Nav Drawer */}
           <button
             onClick={toggleMenu}
-            className="bg-blue-400 rounded-xl flex items-center justify-center shadow-lg hover:cursor-pointer transition-transform hover:rotate-12 md:hidden w-10 h-10 active:scale-95"
+            className="bg-[#b3925a] rounded-sm flex items-center justify-center shadow-md hover:cursor-pointer transition-transform hover:rotate-6 md:hidden w-10 h-10 active:scale-95"
             aria-label="Toggle Menu"
           >
             <MenuIcon className="w-5 h-5 text-white" />
@@ -45,21 +46,21 @@ const Navbar = () => {
 
           {/* Text Titles */}
           <div className="text-left hidden md:block">
-            <h1 className="text-md md:text-xl text-blue-300 font-bold leading-none tracking-wide">
+            <h1 className="text-sm md:text-md text-[#2c2520] font-bold tracking-widest font-serif">
               HOTEL FOOD COURT
             </h1>
-            <span className="text-gray-600 text-xs sm:text-sm block mt-1 font-serif relative bottom-1">
+            <span className="text-gray-400 text-[11px] block mt-0.5 font-sans tracking-wide font-light lowercase">
               explore the best food in town
             </span>
           </div>
         </div>
 
         {/* --- DESKTOP NAVIGATION LINKS LINK RENDER (Hidden on Mobile) --- */}
-        <ul className="flex items-center gap-6 md:flex hidden font-sans">
+        <ul className="flex items-center gap-8 md:flex hidden font-sans">
           {navLinks.map((link) => (
             <li
               key={link.name}
-              className="text-sm font-medium font-serif text-gray-600 hover:text-blue-400 transition-colors"
+              className="text-xs font-semibold uppercase tracking-widest text-gray-500 hover:text-[#b3925a] transition-colors"
             >
               <a href={link.href}>{link.name}</a>
             </li>
@@ -67,24 +68,25 @@ const Navbar = () => {
         </ul>
 
         {/* Action Menu Buttons */}
-        <div className="flex items-center gap-2">
-          <span className="px-4 py-2 text-blue-500 text-xs sm:text-sm rounded-lg  transition-all active:scale-[0.98] font-serif hover:cursor-pointer uppercase">
+        <div className="flex items-center gap-4 font-sans">
+          <Link 
+            to="/auth/login" 
+            className="text-gray-600 text-xs font-semibold tracking-widest hover:text-[#b3925a] transition-colors uppercase"
+          >
             Manage Bookings
-          </span>
-          <span className="h-10 border border-gray-400"></span>
-          {/* <div className="bg-gray-200 rounded-full w-10 h-10 flex items-center justify-center shadow-lg hover:cursor-pointer transition-transform hover:scale-110">
-            <UserIcon className="w-5 h-5 text-gray-600" />
-          </div> */}
-          {/* Modern Language Selector */}
-          <div className="relative group font-serif">
+          </Link>
+          
+          <span className="h-4 border-l border-gray-200"></span>
+
+          {/* Modern Luxury Language Selector */}
+          <div className="relative group">
             <button
-              className="w-20 flex items-center gap-1.5 px-3 py-2 text-xs sm:text-sm font-medium text-blue-500 rounded-lg hover:bg-blue-50 transition-colors cursor-pointer"
+              className="flex items-center gap-1 px-1 py-2 text-xs font-semibold uppercase tracking-widest text-gray-600 hover:text-[#b3925a] transition-colors cursor-pointer"
               aria-label="Select Language"
             >
-              <span>{selectedLanguage}</span>{" "}
-              {/* You can bind this text to state later */}
+              <span>{selectedLanguage}</span>
               <svg
-                className="w-4 h-4 text-blue-400 transition-transform duration-200 group-hover:rotate-180"
+                className="w-3.5 h-3.5 text-gray-400 transition-transform duration-200 group-hover:rotate-180"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -99,12 +101,12 @@ const Navbar = () => {
             </button>
 
             {/* Dropdown Menu - Triggers smoothly on hover/focus */}
-            <div className="absolute right-0 mt-1 w-32 bg-white/95 backdrop-blur-md border border-gray-100 rounded-xl shadow-xl opacity-0 scale-95 pointer-events-none group-hover:opacity-100 group-hover:scale-100 group-hover:pointer-events-auto transition-all duration-200 origin-top-right z-[1002]">
-              <div className="p-1.5 flex flex-col gap-0.5">
+            <div className="absolute right-0 mt-1 w-32 bg-white border border-gray-100 rounded-sm shadow-xl opacity-0 scale-95 pointer-events-none group-hover:opacity-100 group-hover:scale-100 group-hover:pointer-events-auto transition-all duration-200 origin-top-right z-[1002]">
+              <div className="p-1 flex flex-col gap-0.5">
                 {languages.map((language, index) => (
                   <button
                     key={index}
-                    className="w-full text-left px-3 py-2 text-sm text-gray-700 hover:text-blue-500 hover:bg-blue-50/60 rounded-lg transition-colors cursor-pointer"
+                    className="w-full text-left px-3 py-2 text-xs font-medium text-gray-600 hover:text-[#b3925a] hover:bg-[#f7f6f0] rounded-sm transition-colors cursor-pointer"
                     onClick={() => setSelectedLanguage(language.lable)}
                   >
                     {language.lable}
@@ -119,7 +121,7 @@ const Navbar = () => {
       {/* --- MOBILE OVERLAY DRAWER MENUS (Responsive Side Drawer) --- */}
       {/* Muted Backdrop Mask Layer */}
       <div
-        className={`fixed inset-0 bg-black/40 z-[1000] transition-opacity duration-300 md:hidden ${
+        className={`fixed inset-0 bg-[#2c2520]/40 z-[1000] transition-opacity duration-300 md:hidden ${
           isOpen
             ? "opacity-100 pointer-events-auto"
             : "opacity-0 pointer-events-none"
@@ -136,10 +138,10 @@ const Navbar = () => {
         {/* Drawer Panel Header Row */}
         <div className="flex items-center justify-between pb-6 border-b border-gray-100">
           <div className="flex items-center gap-2">
-            <div className="bg-blue-400 rounded-lg w-8 h-8 flex items-center justify-center shadow">
-              <span className="text-lg font-bold text-gray-200">F</span>
+            <div className="bg-[#b3925a] rounded-sm w-8 h-8 flex items-center justify-center shadow">
+              <span className="text-md font-serif font-semibold text-white">F</span>
             </div>
-            <span className="font-serif font-bold text-sm text-blue-400">
+            <span className="font-sans font-semibold text-xs uppercase tracking-widest text-[#2c2520]">
               MENU
             </span>
           </div>
@@ -147,7 +149,7 @@ const Navbar = () => {
           {/* Close Menu Button */}
           <button
             onClick={closeMenu}
-            className="p-1.5 rounded-lg bg-gray-100 text-gray-500 hover:bg-gray-200 active:scale-95 transition-all"
+            className="p-1.5 rounded-sm bg-gray-50 text-gray-400 hover:bg-gray-100 active:scale-95 transition-all"
             aria-label="Close Menu"
           >
             <XIcon className="w-5 h-5" />
@@ -155,13 +157,13 @@ const Navbar = () => {
         </div>
 
         {/* Mobile Vertical Menu Links */}
-        <ul className="flex flex-col gap-2 mt-8 font-sans text-left">
+        <ul className="flex flex-col gap-1 mt-8 font-sans text-left">
           {navLinks.map((link) => (
             <li key={link.name}>
               <a
                 href={link.href}
-                onClick={closeMenu} // Closes the mobile navigation panel smoothly once triggered
-                className="block text-base font-medium text-gray-600 hover:text-blue-400 hover:bg-blue-50/50 px-4 py-3 rounded-xl transition-all"
+                onClick={closeMenu}
+                className="block text-xs font-semibold uppercase tracking-widest text-gray-500 hover:text-[#b3925a] hover:bg-[#f7f6f0] px-4 py-3.5 rounded-sm transition-all"
               >
                 {link.name}
               </a>
@@ -169,9 +171,9 @@ const Navbar = () => {
           ))}
         </ul>
 
-        {/* Mobile Drawer Footer Footer Details */}
+        {/* Mobile Drawer Footer Details */}
         <div className="mt-auto pt-6 border-t border-gray-100 text-left font-sans">
-          <p className="text-[11px] text-gray-400 font-light">
+          <p className="text-[11px] text-gray-400 font-light tracking-wide">
             © 2026 Hotel Food Court. All rights reserved.
           </p>
         </div>
