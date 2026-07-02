@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useAuth } from "../../context/AuthProvider";
+import { PlusIcon } from "lucide-react";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -130,27 +131,75 @@ const USER_BOOKINGS: Booking[] = [
 
 const Icon = {
   Calendar: () => (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <rect x="3" y="4" width="18" height="18" rx="2" /><path d="M16 2v4M8 2v4M3 10h18" />
+    <svg
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <rect x="3" y="4" width="18" height="18" rx="2" />
+      <path d="M16 2v4M8 2v4M3 10h18" />
     </svg>
   ),
   Moon: () => (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
     </svg>
   ),
   User: () => (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <circle cx="12" cy="8" r="4" /><path d="M4 21c0-4 3.5-6 8-6s8 2 8 6" />
+    <svg
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <circle cx="12" cy="8" r="4" />
+      <path d="M4 21c0-4 3.5-6 8-6s8 2 8 6" />
     </svg>
   ),
   Building: () => (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
-      <rect x="4" y="3" width="16" height="18" rx="1" /><path d="M9 8h1M14 8h1M9 12h1M14 12h1M9 16h1M14 16h1" />
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.75"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <rect x="4" y="3" width="16" height="18" rx="1" />
+      <path d="M9 8h1M14 8h1M9 12h1M14 12h1M9 16h1M14 16h1" />
     </svg>
   ),
   Chevron: () => (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <path d="M6 9l6 6 6-6" />
     </svg>
   ),
@@ -270,7 +319,10 @@ export default function TrackMyBookings() {
 
   // Pulls a display name / initials from the authenticated user, with sane fallbacks
   const displayName =
-    (user as unknown as { name?: string })?.name || "Guest";
+    (user as unknown as { full_name?: string })?.full_name?.split(" ")[0] +
+      " " +
+      (user as unknown as { full_name?: string })?.full_name?.split(" ")[1] ||
+    "Guest";
   const initials = displayName
     .split(" ")
     .map((part) => part[0])
@@ -332,7 +384,9 @@ export default function TrackMyBookings() {
             {
               label: "Upcoming",
               value: String(upcoming.length),
-              sub: upcoming[0] ? `Next · ${upcoming[0].checkIn}` : "None planned",
+              sub: upcoming[0]
+                ? `Next · ${upcoming[0].checkIn}`
+                : "None planned",
               accent: true,
             },
             {
@@ -360,33 +414,41 @@ export default function TrackMyBookings() {
           ))}
         </div>
 
-        {/* ── Tabs (segmented control) ─────────────────────────────────────── */}
-        <div className="inline-flex p-1 bg-zinc-100 rounded-lg mb-6">
-          {(["upcoming", "past"] as Tab[]).map((tab) => {
-            const active = activeTab === tab;
-            const count = tab === "upcoming" ? upcoming.length : past.length;
-            return (
-              <button
-                key={tab}
-                onClick={() => {
-                  setActiveTab(tab);
-                  setExpandedId(null);
-                }}
-                className={`px-4 py-1.5 text-[13px] font-medium rounded-md transition-all cursor-pointer ${
-                  active
-                    ? "bg-white text-zinc-900 shadow-sm"
-                    : "text-zinc-500 hover:text-zinc-700"
-                }`}
-              >
-                {tab === "upcoming" ? "Upcoming" : "Past stays"}{" "}
-                <span
-                  className={`ml-1 text-[11px] ${active ? "text-teal-700" : "text-zinc-400"}`}
+        <div className="flex flex-col justify-center items-center md:flex-row md:items-center md:justify-between gap-5 mb-4">
+          {/* ── Tabs (segmented control) ─────────────────────────────────────── */}
+          <div className="inline-flex p-1 bg-zinc-100 rounded-lg mb-6">
+            {(["upcoming", "past"] as Tab[]).map((tab) => {
+              const active = activeTab === tab;
+              const count = tab === "upcoming" ? upcoming.length : past.length;
+              return (
+                <button
+                  key={tab}
+                  onClick={() => {
+                    setActiveTab(tab);
+                    setExpandedId(null);
+                  }}
+                  className={`px-4 py-1.5 text-[13px] font-medium rounded-md transition-all cursor-pointer ${
+                    active
+                      ? "bg-white text-zinc-900 shadow-sm"
+                      : "text-zinc-500 hover:text-zinc-700"
+                  }`}
                 >
-                  {count}
-                </span>
-              </button>
-            );
-          })}
+                  {tab === "upcoming" ? "Upcoming" : "Past stays"}{" "}
+                  <span
+                    className={`ml-1 text-[11px] ${active ? "text-teal-700" : "text-zinc-400"}`}
+                  >
+                    {count}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+          <div>
+            <button className="flex items-center gap-2 text-[13px] bg-teal-700 hover:bg-teal-800 text-white px-4 py-1.5 rounded-md font-medium">
+              <PlusIcon className="w-5 h-5" />
+              New Reservation
+            </button>
+          </div>
         </div>
 
         {/* ── Booking cards ─────────────────────────────────────────────── */}
@@ -404,7 +466,9 @@ export default function TrackMyBookings() {
                 <div
                   key={booking.id}
                   className={`bg-white rounded-2xl border transition-all duration-200 overflow-hidden ${
-                    expanded ? "border-teal-200 shadow-sm" : "border-zinc-200 hover:border-zinc-300"
+                    expanded
+                      ? "border-teal-200 shadow-sm"
+                      : "border-zinc-200 hover:border-zinc-300"
                   }`}
                 >
                   {/* ── Card header ── */}
@@ -429,8 +493,14 @@ export default function TrackMyBookings() {
 
                       <div className="flex flex-wrap gap-4 mt-1 pl-13">
                         {[
-                          { icon: <Icon.Calendar />, text: `${booking.checkIn} → ${booking.checkOut}` },
-                          { icon: <Icon.Moon />, text: `${booking.nights} nights` },
+                          {
+                            icon: <Icon.Calendar />,
+                            text: `${booking.checkIn} → ${booking.checkOut}`,
+                          },
+                          {
+                            icon: <Icon.Moon />,
+                            text: `${booking.nights} nights`,
+                          },
                           {
                             icon: <Icon.User />,
                             text: `${booking.guests} guest${booking.guests > 1 ? "s" : ""}`,
@@ -451,7 +521,9 @@ export default function TrackMyBookings() {
                       <p className="text-[13px] font-semibold text-zinc-900">
                         {booking.totalAmount}
                       </p>
-                      <p className="text-[11px] text-zinc-400 font-mono">#{booking.id}</p>
+                      <p className="text-[11px] text-zinc-400 font-mono">
+                        #{booking.id}
+                      </p>
                     </div>
 
                     <span

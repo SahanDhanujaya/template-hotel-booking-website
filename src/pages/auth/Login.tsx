@@ -55,6 +55,13 @@ const Login = () => {
         return;
       }
 
+      const userRole =
+        result.data?.user?.user_metadata?.role ??
+        result.data?.user?.app_metadata?.role ??
+        result.data?.session?.user?.user_metadata?.role ??
+        result.data?.session?.user?.app_metadata?.role ??
+        "user";
+
       if (result.data?.session?.user?.user_metadata?.email_verified === false) {
         triggerAlert("Email Not Verified!", "error");
         return;
@@ -69,7 +76,11 @@ const Login = () => {
         progress: undefined,
         theme: "light",
       });
-      navigate("/user");
+      if (userRole.toLowerCase() === "admin") {
+        navigate("/admin");
+      } else {
+        navigate("/user");
+      }
     } catch (err: unknown) {
       const message =
         err instanceof Error ? err.message : "An unexpected error occurred";

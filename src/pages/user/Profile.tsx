@@ -109,7 +109,7 @@ export default function Profile() {
   // `updateUserProfile(...)`) once the profile endpoint is wired up — mock
   // state here purely for layout/testing.
   const [form, setForm] = useState<ProfileForm>({
-    fullName: (user as unknown as { name?: string })?.name || "",
+    fullName: (user as unknown as { full_name?: string })?.full_name || "",
     email: user?.email || "",
     phone: "",
     dob: "",

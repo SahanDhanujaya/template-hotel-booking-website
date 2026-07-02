@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { CreditCard, ChevronRight, ArrowRight, Check } from "lucide-react";
+import { useAuth } from "../../context/AuthProvider";
 
 // Mock User Data matching the state shape from previous steps
 interface LoyaltyDashboardProps {
@@ -8,11 +9,11 @@ interface LoyaltyDashboardProps {
 }
 
 const LoyaltyDashboard: React.FC<LoyaltyDashboardProps> = ({
-  userName = "Sahan Ekanayaka",
   membershipId = "690231407596",
 }) => {
   const [activeTab, setActiveTab] = useState<"nights" | "tierPoints">("nights");
 
+  const { user } = useAuth();
   // Mock data for benefits comparison table
   const benefits = [
     {
@@ -32,13 +33,42 @@ const LoyaltyDashboard: React.FC<LoyaltyDashboardProps> = ({
     },
   ];
 
+  const displayName =
+    (user as unknown as { full_name?: string })?.full_name?.split(" ")[0] + " " + (user as unknown as { full_name?: string })?.full_name?.split(" ")[1] || "Guest";
+  const initials = displayName
+    .split(" ")
+    .map((part) => part[0])
+    .slice(0, 2)
+    .join("")
+    .toUpperCase();
+  const memberSince = (user as unknown as { createdAt?: string })?.createdAt
+    ? new Date(
+        (user as unknown as { createdAt?: string }).createdAt as string,
+      ).getFullYear()
+    : null;
+
   return (
     <div className="w-full min-h-screen bg-[#F5F6F8] text-zinc-900 font-sans antialiased pb-12">
       {/* Top Profile Strip */}
       <div className="max-w-6xl mx-auto px-6 py-6 flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-zinc-200">
-        <h1 className="text-2xl font-semibold tracking-tight">
-          {userName}
-        </h1>
+        {/* Authenticated user chip */}
+        <div className="flex items-center gap-3 bg-white rounded-xl border border-zinc-200 px-3.5 py-2.5 self-start md:self-auto">
+          <div className="w-9 h-9 rounded-full bg-gradient-to-br from-teal-600 to-teal-800 text-white flex items-center justify-center text-[11px] font-semibold shrink-0">
+            {initials || "?"}
+          </div>
+          <div>
+            <p className="text-[13px] font-medium text-zinc-900 leading-tight">
+              {displayName}
+            </p>
+            <p className="text-[11.5px] text-zinc-400 leading-tight">
+              {user?.email
+                ? user.email
+                : memberSince
+                  ? `Member since ${memberSince}`
+                  : "Member"}
+            </p>
+          </div>
+        </div>
         <div className="flex items-center gap-2 text-sm text-zinc-500 mt-2 sm:mt-0 font-medium">
           <span>{membershipId}</span>
           <span className="text-zinc-300">|</span>
@@ -54,10 +84,16 @@ const LoyaltyDashboard: React.FC<LoyaltyDashboardProps> = ({
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
           {/* Card: Points Balance */}
           <div className="lg:col-span-1 bg-white p-6 border border-zinc-200 rounded-2xl flex flex-col justify-between">
-            <h2 className="text-[13px] font-medium text-zinc-400">Points balance</h2>
+            <h2 className="text-[13px] font-medium text-zinc-400">
+              Points balance
+            </h2>
             <div className="my-8 text-center">
-              <span className="text-4xl font-semibold tracking-tight text-zinc-900">0</span>
-              <span className="text-sm font-medium ml-2 text-zinc-400">Points</span>
+              <span className="text-4xl font-semibold tracking-tight text-zinc-900">
+                0
+              </span>
+              <span className="text-sm font-medium ml-2 text-zinc-400">
+                Points
+              </span>
             </div>
             <div className="h-4"></div> {/* Spacer to balance height */}
           </div>
@@ -94,7 +130,9 @@ const LoyaltyDashboard: React.FC<LoyaltyDashboardProps> = ({
 
             {/* Progress Meter Segment */}
             <div className="my-6">
-              <p className="text-[13px] font-semibold text-zinc-800 mb-3">0 night(s)</p>
+              <p className="text-[13px] font-semibold text-zinc-800 mb-3">
+                0 night(s)
+              </p>
 
               {/* Custom Track bar layout */}
               <div className="relative w-full h-1.5 bg-zinc-100 rounded-full mt-4">
@@ -131,7 +169,9 @@ const LoyaltyDashboard: React.FC<LoyaltyDashboardProps> = ({
         {/* Row 3: Member Benefits Table Matrix */}
         <div className="bg-white p-6 border border-zinc-200 rounded-2xl">
           <div className="flex justify-between items-center mb-5">
-            <h2 className="text-[15px] font-semibold tracking-tight text-zinc-900">Member benefits</h2>
+            <h2 className="text-[15px] font-semibold tracking-tight text-zinc-900">
+              Member benefits
+            </h2>
             <button className="flex items-center gap-1 text-[12px] font-medium text-zinc-500 hover:text-zinc-900 transition-colors cursor-pointer">
               View all <ChevronRight size={14} />
             </button>
@@ -153,7 +193,10 @@ const LoyaltyDashboard: React.FC<LoyaltyDashboardProps> = ({
               </thead>
               <tbody className="divide-y divide-zinc-100">
                 {benefits.map((benefit, idx) => (
-                  <tr key={idx} className="hover:bg-zinc-50/60 transition-colors">
+                  <tr
+                    key={idx}
+                    className="hover:bg-zinc-50/60 transition-colors"
+                  >
                     <td className="py-4 px-4 text-zinc-600 font-normal leading-relaxed text-[13px]">
                       {benefit.text}
                     </td>

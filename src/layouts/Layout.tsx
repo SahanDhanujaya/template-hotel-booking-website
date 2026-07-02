@@ -9,7 +9,6 @@ interface LayoutProps {
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(true);
 
-
   return (
     <div className="flex h-screen bg-gray-100">
       {/* Sidebar Component */}

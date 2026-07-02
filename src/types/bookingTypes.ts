@@ -6,4 +6,10 @@ type BookingAvailability = {
   children: number;
 };
 
-export type {BookingAvailability};
+type Booking = {
+   id: string;
+   user_id: string;
+   
+}
+
+export type {BookingAvailability, Booking};

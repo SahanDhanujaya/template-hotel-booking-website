@@ -35,16 +35,27 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     // 1. Check if there's no error AND we actually have session/user data
     if (!result.error && result.data?.session?.user) {
       const userData = result.data.session.user;
+      const metadata = (userData.user_metadata as Record<string, unknown> | undefined) ?? {};
+      const appMetadata = (userData.app_metadata as Record<string, unknown> | undefined) ?? {};
+      const role =
+        typeof metadata.role === "string"
+          ? metadata.role
+          : typeof appMetadata.role === "string"
+            ? appMetadata.role
+            : "user";
 
       setIsAuthenticated(true);
 
-      // 2. Map the data safely.
-      // If your 'User' type needs ID/Email, combine them with the metadata:
       setUser({
         id: userData.id,
-        email: userData.email,
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        ...(userData.user_metadata as Record<string, any>),
+        full_name: (metadata.full_name as string | undefined) ?? (metadata.fullName as string | undefined) ?? "",
+        email: userData.email ?? "",
+        phone: (metadata.phone as string | undefined) ?? "",
+        address: (metadata.address as string | undefined) ?? "",
+        avatar: (metadata.avatar as string | undefined) ?? "",
+        created_at: userData.created_at ?? "",
+        updated_at: userData.updated_at ?? "",
+        role,
       } as User);
     } else {
       setIsAuthenticated(false);

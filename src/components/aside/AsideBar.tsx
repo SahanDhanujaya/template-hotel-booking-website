@@ -10,15 +10,24 @@ import {
   XIcon,
   ReceiptIcon,
   ActivityIcon,
+  BedDoubleIcon,
+  BarChart3Icon,
 } from "lucide-react";
 import { useAuth } from "../../context/AuthProvider";
 
-const navItems = [
+const userNavItems = [
   { name: "Dashboard", to: "/user", icon: LayoutDashboardIcon },
   { name: "Reservations", to: "/user/reservations", icon: CalendarCheck2Icon },
   { name: "Vouchers", to: "/user/vouchers", icon: ReceiptIcon },
   { name: "Activities", to: "/user/activities", icon: ActivityIcon },
   { name: "Profile", to: "/user/profile", icon: UsersIcon },
+];
+
+const adminNavItems = [
+  { name: "Manage Bookings", to: "/admin/manage", icon: CalendarCheck2Icon },
+  { name: "Guests", to: "/admin/guests", icon: UsersIcon },
+  { name: "Rooms", to: "/admin/rooms", icon: BedDoubleIcon },
+  { name: "Reports", to: "/admin/reports", icon: BarChart3Icon },
 ];
 
 interface SidebarProps {
@@ -27,11 +36,12 @@ interface SidebarProps {
 }
 
 const Sidebar = ({ isOpen, onToggle }: SidebarProps) => {
-  // Desktop panel sizing state
   const [collapsed, setCollapsed] = useState(false);
-
   const { user, logout } = useAuth();
   const navigate = useNavigate();
+
+  const isAdmin = user?.role?.toLowerCase() === "admin";
+  const navItems = isAdmin ? adminNavItems : userNavItems;
 
   const handleLogout = () => {
     logout();
@@ -57,7 +67,6 @@ const Sidebar = ({ isOpen, onToggle }: SidebarProps) => {
         }`}
       >
         <div className={`flex items-center gap-3 ${collapsed ? "hidden" : "flex"}`}>
-          {/* Teal gradient brand mark */}
           <div className="bg-gradient-to-br from-teal-600 to-teal-800 rounded-xl w-10 h-10 flex items-center justify-center shrink-0">
             <span className="text-lg font-semibold text-white">F</span>
           </div>
@@ -66,7 +75,7 @@ const Sidebar = ({ isOpen, onToggle }: SidebarProps) => {
               Hotel Food Court
             </h1>
             <span className="text-zinc-400 text-[11px] block">
-              User console
+              {isAdmin ? "Admin console" : "User console"}
             </span>
           </div>
         </div>
@@ -77,7 +86,6 @@ const Sidebar = ({ isOpen, onToggle }: SidebarProps) => {
           </div>
         )}
 
-        {/* Desktop Collapse Button */}
         <button
           onClick={() => setCollapsed(!collapsed)}
           className={`hidden md:flex p-1.5 rounded-lg bg-zinc-100 text-zinc-400 hover:bg-teal-50 hover:text-teal-700 active:scale-95 transition-all ${
@@ -94,7 +102,6 @@ const Sidebar = ({ isOpen, onToggle }: SidebarProps) => {
           />
         </button>
 
-        {/* Mobile Close Button */}
         <button
           onClick={() => onToggle(false)}
           className="md:hidden p-1.5 rounded-lg bg-zinc-100 text-zinc-400 hover:bg-zinc-200 active:scale-95 transition-all"
@@ -113,7 +120,7 @@ const Sidebar = ({ isOpen, onToggle }: SidebarProps) => {
               <li key={item.name}>
                 <NavLink
                   to={item.to}
-                  end={item.to === "/user"}
+                  end={item.to === "/user" || item.to === "/admin/manage"}
                   onClick={() => onToggle(false)}
                   className={({ isActive }) =>
                     `group relative flex items-center gap-3 px-3 py-2.5 rounded-lg text-[13px] font-medium transition-all ${
@@ -153,10 +160,11 @@ const Sidebar = ({ isOpen, onToggle }: SidebarProps) => {
             }`}
           >
             <p className="text-[12.5px] font-medium text-zinc-900 truncate max-w-[130px]">
-              {(user as unknown as { name?: string })?.name || "Admin User"}
+              {(user as unknown as { name?: string })?.name ||
+                (isAdmin ? "Admin User" : "Guest User")}
             </p>
             <p className="text-[11px] text-zinc-400 truncate max-w-[130px]">
-              {user?.email || "admin@hotel.com"}
+              {user?.email || (isAdmin ? "admin@hotel.com" : "guest@hotel.com")}
             </p>
           </div>
         </div>
@@ -176,7 +184,6 @@ const Sidebar = ({ isOpen, onToggle }: SidebarProps) => {
 
   return (
     <>
-      {/* --- MOBILE TOP BAR NAVIGATION WITH BOTTOM BORDER --- */}
       <div className="md:hidden h-16 w-full fixed z-[999] top-0 left-0 right-0 bg-white/90 backdrop-blur-md border-b border-zinc-100 flex items-center px-4">
         <button
           onClick={() => onToggle(true)}
@@ -187,7 +194,6 @@ const Sidebar = ({ isOpen, onToggle }: SidebarProps) => {
         </button>
       </div>
 
-      {/* --- DESKTOP FIXED SIDEBAR --- */}
       <aside
         className={`hidden md:flex flex-col relative shrink-0 bg-white border-r border-zinc-100 h-screen sticky top-0 z-[900] transition-all duration-300 ${
           collapsed ? "w-[76px]" : "w-64"
@@ -196,7 +202,6 @@ const Sidebar = ({ isOpen, onToggle }: SidebarProps) => {
         {SidebarContent}
       </aside>
 
-      {/* --- MOBILE BACKDROP --- */}
       <div
         className={`fixed inset-0 bg-zinc-900/30 z-[1000] transition-opacity duration-300 md:hidden ${
           isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
@@ -204,7 +209,6 @@ const Sidebar = ({ isOpen, onToggle }: SidebarProps) => {
         onClick={() => onToggle(false)}
       />
 
-      {/* --- MOBILE SLIDE-OUT DRAWER --- */}
       <aside
         className={`fixed top-0 left-0 bottom-0 w-[280px] bg-white z-[1001] shadow-2xl flex flex-col transition-transform duration-300 ease-in-out md:hidden ${
           isOpen ? "translate-x-0" : "-translate-x-full"
