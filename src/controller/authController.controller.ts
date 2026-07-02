@@ -1,4 +1,3 @@
-import { a } from "framer-motion/client";
 import { supabase } from "../config/supabase";
 import type { LoginData } from "../types/authType";
 
